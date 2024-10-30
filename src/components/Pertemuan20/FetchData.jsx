@@ -25,9 +25,13 @@ const FetchData = () => {
           <div className="col-md-4 mb-4" key={item.id}>
             <div className="card h-100">
               <img
-                src="https://via.placeholder.com/150"
+                src={
+                  item.multimedia?.[0]?.url
+                    ? `https://www.nytimes.com/${item.multimedia[0].url}`
+                    : "https://via.placeholder.com/150"
+                }
                 className="card-img-top"
-                alt="Todo"
+                alt="News Image"
               />
               <div className="card-body">
                 <h5 className="card-title">{item.abstarck}</h5>
@@ -35,7 +39,12 @@ const FetchData = () => {
                 <p className="card-text">
                   <strong>Status:</strong> Not Completed
                 </p>
-                <a href="index.html" className="btn btn-primary">
+                <a
+                  href={item.web_url}
+                  className="btn btn-primary"
+                  target="_blank"
+                  rel="noopener"
+                >
                   Go somewhere
                 </a>
               </div>
